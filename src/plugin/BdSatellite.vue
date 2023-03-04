@@ -19,10 +19,13 @@ const props = defineProps({
 })
 
 const initlayer = (map) => {
-  let normalm = L.tileLayer.chinaProvider("GaoDe.Normal.Map", {
+  let normalm = L.tileLayer.chinaProvider("Baidu.Satellite.Map", {
     ...props.option,
   })
-  let group = L.layerGroup([normalm])
+  let normals = L.tileLayer.chinaProvider("Baidu.Satellite.Annotion", {
+    ...props.option,
+  })
+  let group = L.layerGroup([normalm, normals])
   group.addTo(map)
   $childComponentInstance.value = group
 }

@@ -30,28 +30,7 @@ const initlayer = (map) => {
   $childComponentInstance.value = group
 }
 
-// $getmap().then((map) => {
-
-// })
 initlayer($maphandler.value)
-
-console.log("muyyyy", $childComponentInstance.value)
-// watch(
-//   () => props,
-//   () => {
-//     $childComponentInstance.value.clearLayers()
-//     var imgm = L.tileLayer.chinaProvider("GaoDe.Satellite.Map", {
-//       ...props,
-//     })
-//     var imga = L.tileLayer.chinaProvider("GaoDe.Satellite.Annotion", {
-//       ...props,
-//     })
-//     $childComponentInstance.value.addLayer(imgm).addLayer(imga)
-//   },
-//   {
-//     deep: true,
-//   }
-// )
 
 const $$instance = $childComponentInstance
 defineExpose({

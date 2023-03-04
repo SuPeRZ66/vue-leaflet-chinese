@@ -4,9 +4,10 @@
 // import GdNormal from "./plugin/GdNormal.vue"
 // import GdSatellite from "./plugin/GdSatellite.vue"
 import myimg from "./assets/logo.jpeg"
+import L from "leaflet"
 import { ref } from "vue"
 const myfgroup = ref()
-const key = "f7ea3e17748cfaaee4b48f8bff839502"
+const key = ref("f7ea3e17748cfaaee4b48f8bff839502")
 const txt = ref("隐藏")
 const show = ref(true)
 const zoom = ref(18)
@@ -26,13 +27,21 @@ const changeshow = () => {
           lng: 121.914,
         },
       ]
+
+  latlngs.value = show.value
+    ? [
+        [31.45, 120.99],
+        [31.27, 121.13],
+        [31.48, 121.914],
+      ]
+    : []
   console.log(show.value)
   txt.value = !show.value ? "显示" : "隐藏"
   //zoom.value = 10
 }
 const opt = {
   maxZoom: 15,
-  minZoom: 5,
+  minZoom: 1,
 }
 const arr = ref([
   {
@@ -59,15 +68,20 @@ const myopt = {
   },
 }
 
-var latlngs = [
+var latlngs = ref([
   [31.45, 120.99],
   [31.27, 121.13],
   [31.48, 121.914],
-]
+])
+const mapoption = ref({
+  center: [31.41, 120.98],
+  zoom: 13,
+  // crs: "baidu",
+})
 </script>
 
 <template>
-  <LeafletMap :keys="key" style="width: 500px; height: 500px">
+  <LeafletMap :option="mapoption" style="width: 500px; height: 500px">
     <!-- <GdNormal /> -->
     <Fgroup @click="layerclick" ref="myfgroup">
       <Lmarker
@@ -79,8 +93,10 @@ var latlngs = [
       >
       </Lmarker>
     </Fgroup>
-    <GdSatellite :option="opt" />
-    <Lpolygon :latlngs="latlngs" @click="markerclick" :data="myopt" />
+    <!-- <BdSatellite /> -->
+    <TianSatellite :tk="key" :option="opt" />
+    <!-- <GdSatellite :option="opt" /> -->
+    <!-- <Lpolygon :latlngs="latlngs" @click="markerclick" :data="myopt" /> -->
     <Lpolyline :latlngs="latlngs" @click="markerclick" :data="myopt" />
     <!-- <Lmarker
       v-for="(item, index) in arr"

@@ -19,7 +19,7 @@ const props = defineProps({
 })
 
 const initlayer = (map) => {
-  let normalm = L.tileLayer.chinaProvider("GaoDe.Normal.Map", {
+  let normalm = L.tileLayer.chinaProvider("Tencent.Normal.Map", {
     ...props.option,
   })
   let group = L.layerGroup([normalm])

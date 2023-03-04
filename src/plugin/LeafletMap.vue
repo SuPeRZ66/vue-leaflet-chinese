@@ -11,14 +11,14 @@ import "leaflet/dist/leaflet.css"
 // import "../utils/leaflet.china"
 import { useMap } from "../hook/map"
 const props = defineProps({
-  keys: {
-    type: String,
-    default: "",
+  option: {
+    type: Object,
+    default: {},
     required: false,
   },
 })
 const { mapref, maphandler } = useMap(props)
-console.log("father created")
+
 // provide("mapinstance", getMap)
 provide("maphandler", maphandler)
 provide("layerGrouphandler", null)
