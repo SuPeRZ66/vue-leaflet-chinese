@@ -64,7 +64,7 @@ const layerclick = (e, data) => {
 }
 const myopt = {
   icon: {
-    iconUrl: myimg,
+    // iconUrl: myimg,
   },
 }
 
