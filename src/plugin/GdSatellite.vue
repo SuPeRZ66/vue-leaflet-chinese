@@ -5,7 +5,7 @@ import { useRegister } from "../hook/register"
 import L from "leaflet"
 import { watch, nextTick } from "vue"
 
-const { $getmap, $childComponentInstance, $maphandler } = useRegister()
+const { $childComponentInstance, $maphandler } = useRegister()
 
 const props = defineProps({
   option: {
@@ -30,9 +30,12 @@ const initlayer = (map) => {
   $childComponentInstance.value = group
 }
 
-$getmap().then((map) => {
-  initlayer(map.value)
-})
+// $getmap().then((map) => {
+
+// })
+initlayer($maphandler.value)
+
+console.log("muyyyy", $childComponentInstance.value)
 // watch(
 //   () => props,
 //   () => {

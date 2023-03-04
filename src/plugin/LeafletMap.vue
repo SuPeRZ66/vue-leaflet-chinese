@@ -17,10 +17,12 @@ const props = defineProps({
     required: false,
   },
 })
-const { mapref, maphandler, getMap } = useMap(props)
-
-provide("mapinstance", getMap)
+const { mapref, maphandler } = useMap(props)
+console.log("father created")
+// provide("mapinstance", getMap)
 provide("maphandler", maphandler)
+provide("layerGrouphandler", null)
+provide("featureGrouphandler", null)
 </script>
 <style scoped>
 .mapwrap {
